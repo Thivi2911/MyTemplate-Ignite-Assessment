@@ -58,7 +58,7 @@ ui-test:
 security:
 	bandit -r appname -f json -o bandit-report.json
 
-quality: test coverage lint security
+quality: coverage lint security ui-test
 
 agent-setup:
 	python3 -m venv env
