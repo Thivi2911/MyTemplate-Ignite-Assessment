@@ -31,10 +31,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
+          pip install pytest pytest-cov flake8 bandit playwright
 
       - name: Install Playwright browser
         run: |
-          playwright install --with-deps chromium
+          python -m playwright install --with-deps chromium
 
       - name: Run application tests with coverage
         run: |
@@ -54,28 +55,28 @@ jobs:
           echo "Waiting for Flask application..."
 
           for i in {1..30}; do
-            if curl -s http://127.0.0.1:5000 > /dev/null; then
+            if curl --silent --fail http://127.0.0.1:5000 > /dev/null; then
               echo "Flask application is ready!"
               break
             fi
 
-            echo "Waiting... attempt $i"
+            echo "Waiting for Flask application... attempt $i"
             sleep 2
           done
 
           echo "Flask server log:"
           cat flask.log
 
-          if ! curl -s --fail http://127.0.0.1:5000 > /dev/null; then
+          if ! curl --silent --fail http://127.0.0.1:5000 > /dev/null; then
             echo "Flask application failed to start."
-            kill $SERVER_PID || true
+            kill "$SERVER_PID" || true
             exit 1
           fi
 
           echo "Running UI tests..."
           pytest tests/test_ui.py
 
-          kill $SERVER_PID
+          kill "$SERVER_PID"
 
       - name: Run Flake8
         continue-on-error: true
