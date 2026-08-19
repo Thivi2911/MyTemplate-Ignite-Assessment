@@ -1,0 +1,5423 @@
+[
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 42
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import sentry_sdk\r\nfrom flask import Flask, render_template, request\r\nfrom sentry_sdk import last_event_id\r\nfrom sentry_sdk.integrations.flask import FlaskIntegration\r\nfrom webassets.loaders import PythonLoader as PythonAssetsLoader\r\n\r\nfrom appname import assets, constants, utils\r\nfrom appname.api import handle_api_error\r\nfrom appname.api.resources import api_blueprint\r\nfrom appname.controllers.admin.jobs import jobs\r\nfrom appname.controllers.auth import auth\r\nfrom appname.controllers.dashboard import dashboard_blueprints\r\nfrom appname.controllers.main import main\r\nfrom appname.controllers.oauth import google_blueprint\r\nfrom appname.controllers.settings import settings_blueprint\r\nfrom appname.controllers.store import store\r\nfrom appname.controllers.webhooks.stripe import stripe_blueprint\r\nfrom appname.converter import custom_converters\r\nfrom appname.extensions import (\r\n    admin,\r\n    assets_env,\r\n    branding,\r\n    cache,\r\n    csrf,\r\n    debug_toolbar,\r\n    hashids,\r\n    limiter,\r\n    login_manager,\r\n    mail,\r\n    rq2,\r\n    storage,\r\n    stripe,\r\n    token,\r\n)\r\nfrom appname.forms import SimpleForm\r\nfrom appname.helpers import view as view_helpers\r\nfrom appname.models import db\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 45
+          },
+          "location": {
+            "column": 1,
+            "row": 3
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 3
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 3,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 9
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import flask_admin as admin\r\nfrom flask import redirect, request, url_for\r\nfrom flask_admin.contrib import sqla\r\nfrom flask_admin.form import SecureForm\r\nfrom flask_login import current_user\r\n\r\nfrom appname.models import ModelProxy, db\r\nfrom appname.models.user import User\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 11
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP008",
+    "end_location": {
+      "column": 42,
+      "row": 30
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 41,
+            "row": 30
+          },
+          "location": {
+            "column": 22,
+            "row": 30
+          }
+        }
+      ],
+      "message": "Remove `super()` parameters"
+    },
+    "location": {
+      "column": 21,
+      "row": 30
+    },
+    "message": "Use `super()` instead of `super(__class__, self)`",
+    "name": "super-call-with-parameters",
+    "noqa_row": 30,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/super-call-with-parameters"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 52,
+      "row": 35
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 29,
+      "row": 35
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 35,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 39,
+      "row": 45
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 45
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 45,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 54,
+      "row": 46
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 46
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 46,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 39,
+      "row": 47
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 47
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 47,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 31,
+      "row": 48
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 22,
+      "row": 48
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 48,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 38,
+      "row": 52
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 52
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 52,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 74,
+      "row": 53
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 53
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 53,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 29,
+      "row": 54
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 54
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 54,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 30,
+      "row": 55
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 22,
+      "row": 55
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 55,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 46,
+      "row": 59
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 59
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 59,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 89,
+      "row": 60
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 60
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 60,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 29,
+      "row": 61
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 61
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 61,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 35,
+      "row": 62
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\admin.py",
+    "fix": null,
+    "location": {
+      "column": 22,
+      "row": 62
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 62,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 8
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import flask_restful as restful\r\nfrom flask import Blueprint, jsonify, request\r\nfrom flask_restful import abort, fields, reqparse\r\nfrom flask_restful.representations.json import output_json\r\n\r\nfrom appname.extensions import login_manager\r\nfrom appname.models.user import User\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 10
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 43,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 37,
+      "row": 4
+    },
+    "message": "`flask_restful.fields` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 4,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 50,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 45,
+      "row": 4
+    },
+    "message": "`flask_restful.abort` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 4,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 27,
+      "row": 68
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 25,
+      "row": 68
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 68,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 25,
+      "row": 69
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 23,
+      "row": 69
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 69,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 64,
+      "row": 73
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "\"<Resource {}>\".format(self.__class__.__name__)",
+          "end_location": {
+            "column": 64,
+            "row": 73
+          },
+          "location": {
+            "column": 16,
+            "row": 73
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 16,
+      "row": 73
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 73,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 64,
+      "row": 73
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"<Resource {self.__class__.__name__}>\"",
+          "end_location": {
+            "column": 64,
+            "row": 73
+          },
+          "location": {
+            "column": 16,
+            "row": 73
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 16,
+      "row": 73
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 73,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP039",
+    "end_location": {
+      "column": 22,
+      "row": 79
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 22,
+            "row": 79
+          },
+          "location": {
+            "column": 20,
+            "row": 79
+          }
+        }
+      ],
+      "message": "Remove parentheses"
+    },
+    "location": {
+      "column": 20,
+      "row": 79
+    },
+    "message": "Unnecessary parentheses after class definition",
+    "name": "unnecessary-class-parentheses",
+    "noqa_row": 79,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-class-parentheses"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 20,
+      "row": 84
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 18,
+      "row": 84
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 84,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 61,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\info.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask_restful import fields, marshal_with\r\n\r\nfrom appname.api import API_VERSION, BaseAPISchema, Resource\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 6,
+      "row": 11
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\info.py",
+    "fix": null,
+    "location": {
+      "column": 18,
+      "row": 7
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 7,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 55,
+      "row": 21
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\info.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'/api/{}/info'.format(API_VERSION)",
+          "end_location": {
+            "column": 55,
+            "row": 21
+          },
+          "location": {
+            "column": 20,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 20,
+      "row": 21
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 21,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 55,
+      "row": 21
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\info.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'/api/{API_VERSION}/info'",
+          "end_location": {
+            "column": 55,
+            "row": 21
+          },
+          "location": {
+            "column": 20,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 20,
+      "row": 21
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 21,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 45,
+      "row": 6
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\resources.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import redirect, url_for\r\nfrom flask_restful import abort\r\n\r\nfrom appname.api import API_BASE, API_VERSION, api, api_blueprint\r\nfrom appname.api.info import APIInfo\r\nfrom appname.api.user import CurrentUserInfo\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 8
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 32,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\resources.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 2
+          }
+        }
+      ],
+      "message": "Remove unused import: `flask_restful.abort`"
+    },
+    "location": {
+      "column": 27,
+      "row": 2
+    },
+    "message": "`flask_restful.abort` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 2,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 66,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\resources.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname.api import api, api_blueprint, API_VERSION",
+          "end_location": {
+            "column": 66,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 4
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.api.API_BASE`"
+    },
+    "location": {
+      "column": 58,
+      "row": 4
+    },
+    "message": "`appname.api.API_BASE` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 4,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 58,
+      "row": 20
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\resources.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'/{}/info'.format(API_VERSION)",
+          "end_location": {
+            "column": 58,
+            "row": 20
+          },
+          "location": {
+            "column": 27,
+            "row": 20
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 27,
+      "row": 20
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 20,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 58,
+      "row": 20
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\resources.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'/{API_VERSION}/info'",
+          "end_location": {
+            "column": 58,
+            "row": 20
+          },
+          "location": {
+            "column": 27,
+            "row": 20
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 27,
+      "row": 20
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 20,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 74,
+      "row": 21
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\resources.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'/{}/user/current'.format(API_VERSION)",
+          "end_location": {
+            "column": 74,
+            "row": 21
+          },
+          "location": {
+            "column": 35,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 35,
+      "row": 21
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 21,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 74,
+      "row": 21
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\resources.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'/{API_VERSION}/user/current'",
+          "end_location": {
+            "column": 74,
+            "row": 21
+          },
+          "location": {
+            "column": 35,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 35,
+      "row": 21
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 21,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 61,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\user.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask_login import current_user\r\nfrom flask_restful import abort, fields, marshal_with\r\n\r\nfrom appname.api import API_VERSION, BaseAPISchema, Resource\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 7
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 61,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\user.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname.api import Resource, BaseAPISchema",
+          "end_location": {
+            "column": 61,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.api.API_VERSION`"
+    },
+    "location": {
+      "column": 50,
+      "row": 5
+    },
+    "message": "`appname.api.API_VERSION` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 5,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 6,
+      "row": 12
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\api\\user.py",
+    "fix": null,
+    "location": {
+      "column": 18,
+      "row": 8
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 8,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 42,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\billing_plans.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import logging\r\nimport os\r\n\r\nfrom appname.extensions import stripe\r\nfrom appname.models import ModelProxy, db\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "SIM103",
+    "end_location": {
+      "column": 25,
+      "row": 31
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\billing_plans.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "return self.billing_type == UNLIMITED",
+          "end_location": {
+            "column": 25,
+            "row": 31
+          },
+          "location": {
+            "column": 9,
+            "row": 28
+          }
+        }
+      ],
+      "message": "Replace with `return self.billing_type == UNLIMITED`"
+    },
+    "location": {
+      "column": 9,
+      "row": 28
+    },
+    "message": "Return the condition `self.billing_type == UNLIMITED` directly",
+    "name": "needless-bool",
+    "noqa_row": 28,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/needless-bool"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 94,
+      "row": 45
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\billing_plans.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"Failed on subscription ID {self.team.subscription_id}\"",
+          "end_location": {
+            "column": 94,
+            "row": 45
+          },
+          "location": {
+            "column": 30,
+            "row": 45
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 30,
+      "row": 45
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 45,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "TRY002",
+    "end_location": {
+      "column": 75,
+      "row": 46
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\billing_plans.py",
+    "fix": null,
+    "location": {
+      "column": 23,
+      "row": 46
+    },
+    "message": "Create your own exception",
+    "name": "raise-vanilla-class",
+    "noqa_row": 46,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/raise-vanilla-class"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 97,
+      "row": 50
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\billing_plans.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"Setting subscription for team {self.team.id} to {quantity}\"",
+          "end_location": {
+            "column": 97,
+            "row": 50
+          },
+          "location": {
+            "column": 26,
+            "row": 50
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 26,
+      "row": 50
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 50,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "TRY002",
+    "end_location": {
+      "column": 56,
+      "row": 55
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\billing_plans.py",
+    "fix": null,
+    "location": {
+      "column": 15,
+      "row": 55
+    },
+    "message": "Create your own exception",
+    "name": "raise-vanilla-class",
+    "noqa_row": 55,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/raise-vanilla-class"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 20,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\admin\\jobs.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import rq_dashboard\r\nfrom flask import abort, current_app\r\nfrom flask_login import current_user\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 61,
+      "row": 12
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\auth.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import (\r\n    Blueprint,\r\n    abort,\r\n    flash,\r\n    redirect,\r\n    render_template,\r\n    request,\r\n    session,\r\n    url_for,\r\n)\r\nfrom flask_login import current_user, login_required, login_user, logout_user\r\n\r\nimport appname.constants as constants\r\nfrom appname.extensions import limiter, login_manager, token\r\nfrom appname.forms import SimpleForm\r\nfrom appname.forms.login import (\r\n    ChangePasswordForm,\r\n    LoginForm,\r\n    RequestPasswordResetForm,\r\n    SignupForm,\r\n)\r\nfrom appname.mailers.auth import ConfirmEmail, ResetPassword\r\nfrom appname.models import db, get_or_none\r\nfrom appname.models.teams import TeamMember\r\nfrom appname.models.user import User\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 14
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "PLR0402",
+    "end_location": {
+      "column": 38,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\auth.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname import constants",
+          "end_location": {
+            "column": 38,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 4
+          }
+        }
+      ],
+      "message": "Replace with `from appname import constants`"
+    },
+    "location": {
+      "column": 8,
+      "row": 4
+    },
+    "message": "Use `from appname import constants` in lieu of alias",
+    "name": "manual-from-import",
+    "noqa_row": 4,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/manual-from-import"
+  },
+  {
+    "cell": null,
+    "code": "BLE001",
+    "end_location": {
+      "column": 21,
+      "row": 95
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\auth.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 95
+    },
+    "message": "Do not catch blind exception: `Exception`",
+    "name": "blind-except",
+    "noqa_row": 95,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/blind-except"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 40,
+      "row": 130
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\auth.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"Sent confirmation to {current_user.email}\"",
+          "end_location": {
+            "column": 40,
+            "row": 130
+          },
+          "location": {
+            "column": 17,
+            "row": 129
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 17,
+      "row": 129
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 129,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "BLE001",
+    "end_location": {
+      "column": 21,
+      "row": 163
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\auth.py",
+    "fix": null,
+    "location": {
+      "column": 12,
+      "row": 163
+    },
+    "message": "Do not catch blind exception: `Exception`",
+    "name": "blind-except",
+    "noqa_row": 163,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/blind-except"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 48,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from .files import blueprint as files_blueprint\r\nfrom .home import blueprint as home_blueprint\r\nfrom .team import blueprint as team_blueprint\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 55,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import (\r\n    Blueprint,\r\n    abort,\r\n    flash,\r\n    redirect,\r\n    render_template,\r\n    request,\r\n    session,\r\n    url_for,\r\n)\r\nfrom flask_login import current_user, login_required\r\n\r\nfrom appname.extensions import storage\r\nfrom appname.forms import SimpleForm\r\nfrom appname.forms.files import FileForm\r\nfrom appname.helpers.session import current_membership\r\nfrom appname.models import db, get_or_none\r\nfrom appname.models.team_file import TeamFile\r\nfrom appname.models.teams import Team, TeamMember\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 12
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 78,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import Blueprint, render_template, flash, abort, redirect, url_for",
+          "end_location": {
+            "column": 96,
+            "row": 1
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Remove unused import"
+    },
+    "location": {
+      "column": 71,
+      "row": 1
+    },
+    "message": "`flask.request` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 96,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import Blueprint, render_template, flash, abort, redirect, url_for",
+          "end_location": {
+            "column": 96,
+            "row": 1
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Remove unused import"
+    },
+    "location": {
+      "column": 89,
+      "row": 1
+    },
+    "message": "`flask.session` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 50,
+      "row": 6
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname.models.teams import Team",
+          "end_location": {
+            "column": 50,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 6
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.models.teams.TeamMember`"
+    },
+    "location": {
+      "column": 40,
+      "row": 6
+    },
+    "message": "`appname.models.teams.TeamMember` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 6,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 37,
+      "row": 8
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 9
+          },
+          "location": {
+            "column": 1,
+            "row": 8
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.forms.SimpleForm`"
+    },
+    "location": {
+      "column": 27,
+      "row": 8
+    },
+    "message": "`appname.forms.SimpleForm` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 8,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 55,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 11
+          },
+          "location": {
+            "column": 1,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.helpers.session.current_membership`"
+    },
+    "location": {
+      "column": 37,
+      "row": 10
+    },
+    "message": "`appname.helpers.session.current_membership` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 10,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F523",
+    "end_location": {
+      "column": 84,
+      "row": 47
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "\"Succesfully Uploaded {}\".format(team_file.file_name, )",
+          "end_location": {
+            "column": 84,
+            "row": 47
+          },
+          "location": {
+            "column": 15,
+            "row": 47
+          }
+        }
+      ],
+      "message": "Remove extra positional arguments at position(s): 1"
+    },
+    "location": {
+      "column": 15,
+      "row": 47
+    },
+    "message": "`.format` call has unused arguments at position(s): 1",
+    "name": "string-dot-format-extra-positional-arguments",
+    "noqa_row": 47,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/string-dot-format-extra-positional-arguments"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 84,
+      "row": 47
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"Succesfully Uploaded {team_file.file_name}\"",
+          "end_location": {
+            "column": 84,
+            "row": 47
+          },
+          "location": {
+            "column": 15,
+            "row": 47
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 15,
+      "row": 47
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 47,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 38,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\home.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import Blueprint, abort, flash, redirect, render_template, url_for\r\nfrom flask_login import current_user, login_required\r\n\r\nfrom appname.models import get_or_none\r\nfrom appname.models.teams import Team\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 7
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 55,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import Blueprint, abort, flash, redirect, render_template, session, url_for\r\nfrom flask_login import current_user, login_required\r\n\r\nfrom appname.constants import MAX_TEAM_SIZE\r\nfrom appname.extensions import stripe\r\nfrom appname.forms import SimpleForm\r\nfrom appname.forms.teams import InviteMemberForm\r\nfrom appname.helpers.session import current_membership\r\nfrom appname.models import get_or_none\r\nfrom appname.models.teams import Team, TeamMember\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 12
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 87,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import Blueprint, render_template, flash, abort, redirect, url_for",
+          "end_location": {
+            "column": 87,
+            "row": 1
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Remove unused import: `flask.session`"
+    },
+    "location": {
+      "column": 80,
+      "row": 1
+    },
+    "message": "`flask.session` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 44,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 4
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.constants.MAX_TEAM_SIZE`"
+    },
+    "location": {
+      "column": 31,
+      "row": 4
+    },
+    "message": "`appname.constants.MAX_TEAM_SIZE` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 4,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 55,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 11
+          },
+          "location": {
+            "column": 1,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.helpers.session.current_membership`"
+    },
+    "location": {
+      "column": 37,
+      "row": 10
+    },
+    "message": "`appname.helpers.session.current_membership` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 10,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 55,
+      "row": 45
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'Invited {form.email.data}'",
+          "end_location": {
+            "column": 55,
+            "row": 45
+          },
+          "location": {
+            "column": 19,
+            "row": 45
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 19,
+      "row": 45
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 45,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 67,
+      "row": 47
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'{form.email.data} is already a member'",
+          "end_location": {
+            "column": 67,
+            "row": 47
+          },
+          "location": {
+            "column": 19,
+            "row": 47
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 19,
+      "row": 47
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 47,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 45,
+      "row": 86
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\dashboard\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'Removed {old_email}'",
+          "end_location": {
+            "column": 45,
+            "row": 86
+          },
+          "location": {
+            "column": 15,
+            "row": 86
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 15,
+      "row": 86
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 86,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 6
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\main.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import stripe\r\nfrom flask import Blueprint, redirect, render_template, url_for\r\nfrom flask_login import current_user\r\n\r\nfrom appname.extensions import cache\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 8
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 50,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\oauth\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 34,
+      "row": 1
+    },
+    "message": "`.google.blueprint` imported but unused; consider removing, adding to `__all__`, or using a redundant alias",
+    "name": "unused-import",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 44,
+      "row": 11
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\oauth\\google.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import flash\r\nfrom flask_dance.consumer import oauth_authorized, oauth_error\r\nfrom flask_dance.consumer.storage.sqla import SQLAlchemyStorage\r\nfrom flask_dance.contrib.google import make_google_blueprint\r\nfrom flask_login import current_user, login_user\r\nfrom sqlalchemy.orm.exc import NoResultFound\r\n\r\nfrom appname.extensions import cache\r\nfrom appname.models import db\r\nfrom appname.models.user import OAuth, User\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 14
+          },
+          "location": {
+            "column": 1,
+            "row": 2
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 2
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 2,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 73,
+      "row": 67
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\oauth\\google.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"Successfully signed in as {existing_user.email}\"",
+          "end_location": {
+            "column": 73,
+            "row": 67
+          },
+          "location": {
+            "column": 15,
+            "row": 67
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 15,
+      "row": 67
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 67,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 6,
+      "row": 90
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\oauth\\google.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "(f\"OAuth error from {blueprint.name}! \" f\"message={message} response={response}\")",
+          "end_location": {
+            "column": 6,
+            "row": 90
+          },
+          "location": {
+            "column": 11,
+            "row": 88
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 11,
+      "row": 88
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 88,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 40,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\realtime.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask_login import current_user\r\nfrom flask_socketio import join_room, leave_room, send\r\n\r\nfrom appname.extensions import socketio\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "PLR1711",
+    "end_location": {
+      "column": 11,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\realtime.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 11
+          },
+          "location": {
+            "column": 1,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Remove useless `return` statement"
+    },
+    "location": {
+      "column": 5,
+      "row": 10
+    },
+    "message": "Useless `return` statement at end of function",
+    "name": "useless-return",
+    "noqa_row": 10,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/useless-return"
+  },
+  {
+    "cell": null,
+    "code": "PLR1711",
+    "end_location": {
+      "column": 11,
+      "row": 16
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\realtime.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 17
+          },
+          "location": {
+            "column": 1,
+            "row": 16
+          }
+        }
+      ],
+      "message": "Remove useless `return` statement"
+    },
+    "location": {
+      "column": 5,
+      "row": 16
+    },
+    "message": "Useless `return` statement at end of function",
+    "name": "useless-return",
+    "noqa_row": 16,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/useless-return"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 48,
+      "row": 14
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\settings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import (\r\n    Blueprint,\r\n    Response,\r\n    flash,\r\n    redirect,\r\n    render_template,\r\n    request,\r\n    url_for,\r\n)\r\nfrom flask_login import current_user, login_required\r\n\r\nfrom appname.billing_plans import plans_by_name\r\nfrom appname.extensions import branding, stripe\r\nfrom appname.forms import SimpleForm\r\nfrom appname.forms.account import ChangeProfileForm\r\nfrom appname.forms.login import ChangePasswordForm\r\nfrom appname.helpers.gdpr import GDPRExport\r\nfrom appname.models import db\r\nfrom appname.utils.token import generate_api_secret\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 16
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F811",
+    "end_location": {
+      "column": 38,
+      "row": 14
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\settings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname.extensions import branding",
+          "end_location": {
+            "column": 48,
+            "row": 14
+          },
+          "location": {
+            "column": 1,
+            "row": 14
+          }
+        }
+      ],
+      "message": "Remove definition: `stripe`"
+    },
+    "location": {
+      "column": 32,
+      "row": 14
+    },
+    "message": "Redefinition of unused `stripe` from line 5: `stripe` redefined here",
+    "name": "redefined-while-unused",
+    "noqa_row": 14,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/redefined-while-unused"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 113,
+      "row": 78
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\settings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"Your API Key is: '{api_key}'. It will not be displayed again, so make sure you save it.\"",
+          "end_location": {
+            "column": 113,
+            "row": 78
+          },
+          "location": {
+            "column": 15,
+            "row": 78
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 15,
+      "row": 78
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 78,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 87,
+      "row": 121
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\settings.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "\"Please email {} to delete your account\".format(branding.support_email)",
+          "end_location": {
+            "column": 87,
+            "row": 121
+          },
+          "location": {
+            "column": 15,
+            "row": 121
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 15,
+      "row": 121
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 121,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 87,
+      "row": 121
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\settings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"Please email {branding.support_email} to delete your account\"",
+          "end_location": {
+            "column": 87,
+            "row": 121
+          },
+          "location": {
+            "column": 15,
+            "row": 121
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 15,
+      "row": 121
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 121,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 50,
+      "row": 8
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\store.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import stripe\r\nfrom flask import Blueprint, flash, render_template, request\r\n\r\nfrom appname.extensions import csrf\r\nfrom appname.mailers.store import PurchaseReceipt\r\nfrom appname.models.user import User\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 10
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 68,
+      "row": 9
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\webhooks\\stripe.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import logging\r\nfrom itertools import product\r\n\r\nfrom flask import Blueprint, abort, request, url_for\r\n\r\nfrom appname.billing_plans import MonthlyPremium, plans_by_price_id\r\nfrom appname.extensions import csrf, stripe\r\nfrom appname.models import db, get_or_none\r\nfrom appname.models.teams import Team\r\nfrom appname.models.user import User\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 11
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 30,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\webhooks\\stripe.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 2
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Remove unused import: `itertools.product`"
+    },
+    "location": {
+      "column": 23,
+      "row": 1
+    },
+    "message": "`itertools.product` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 46,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\webhooks\\stripe.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import Blueprint, request",
+          "end_location": {
+            "column": 53,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 3
+          }
+        }
+      ],
+      "message": "Remove unused import"
+    },
+    "location": {
+      "column": 39,
+      "row": 3
+    },
+    "message": "`flask.url_for` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 3,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 53,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\webhooks\\stripe.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import Blueprint, request",
+          "end_location": {
+            "column": 53,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 3
+          }
+        }
+      ],
+      "message": "Remove unused import"
+    },
+    "location": {
+      "column": 48,
+      "row": 3
+    },
+    "message": "`flask.abort` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 3,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 37,
+      "row": 6
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\controllers\\webhooks\\stripe.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 7
+          },
+          "location": {
+            "column": 1,
+            "row": 6
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.models.user.User`"
+    },
+    "location": {
+      "column": 33,
+      "row": 6
+    },
+    "message": "`appname.models.user.User` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 6,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 39,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\converter.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from werkzeug.routing import BaseConverter, ValidationError\r\n\r\nfrom appname.extensions import hashids\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP008",
+    "end_location": {
+      "column": 35,
+      "row": 7
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\converter.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 34,
+            "row": 7
+          },
+          "location": {
+            "column": 15,
+            "row": 7
+          }
+        }
+      ],
+      "message": "Remove `super()` parameters"
+    },
+    "location": {
+      "column": 14,
+      "row": 7
+    },
+    "message": "Use `super()` instead of `super(__class__, self)`",
+    "name": "super-call-with-parameters",
+    "noqa_row": 7,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/super-call-with-parameters"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 67,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\converter.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'(?:{}|{})'.format(false_value, true_value)",
+          "end_location": {
+            "column": 67,
+            "row": 10
+          },
+          "location": {
+            "column": 22,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 22,
+      "row": 10
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 10,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 67,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\converter.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'(?:{false_value}|{true_value})'",
+          "end_location": {
+            "column": 67,
+            "row": 10
+          },
+          "location": {
+            "column": 22,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 22,
+      "row": 10
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 10,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 47,
+      "row": 21
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\extensions.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask_assets import Environment\r\nfrom flask_caching import Cache\r\nfrom flask_cloudy import Storage\r\nfrom flask_debugtoolbar import DebugToolbarExtension\r\nfrom flask_limiter import Limiter\r\nfrom flask_limiter.util import get_remote_address\r\nfrom flask_login import LoginManager\r\nfrom flask_mail import Mail\r\nfrom flask_rq2 import RQ\r\n\r\n# from flask_socketio import SocketIO\r\nfrom flask_wtf.csrf import CSRFProtect\r\n\r\nfrom appname.admin import AdminDashboard\r\nfrom appname.services.branding import Branding\r\nfrom appname.services.hash_ids import HashIds\r\nfrom appname.services.security import Token\r\nfrom appname.services.stripe import Stripe\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 23
+          },
+          "location": {
+            "column": 1,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 5
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 5,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP025",
+    "end_location": {
+      "column": 75,
+      "row": 41
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\extensions.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 6,
+            "row": 41
+          },
+          "location": {
+            "column": 5,
+            "row": 41
+          }
+        }
+      ],
+      "message": "Remove unicode prefix"
+    },
+    "location": {
+      "column": 5,
+      "row": 41
+    },
+    "message": "Remove unicode literals from strings",
+    "name": "unicode-kind-prefix",
+    "noqa_row": 41,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unicode-kind-prefix"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 32,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask_wtf import FlaskForm\r\nfrom wtforms import StringField\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 44,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\account.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from wtforms import StringField, validators\r\n\r\nfrom appname.forms import BaseForm\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 57,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\files.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from wtforms import FileField, TextAreaField, validators\r\n\r\nfrom appname.forms import BaseForm\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\login.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from wtforms import HiddenField, PasswordField, StringField, validators\r\n\r\nfrom appname.forms import BaseForm\r\nfrom appname.models.user import User\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP008",
+    "end_location": {
+      "column": 48,
+      "row": 11
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\login.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 47,
+            "row": 11
+          },
+          "location": {
+            "column": 32,
+            "row": 11
+          }
+        }
+      ],
+      "message": "Remove `super()` parameters"
+    },
+    "location": {
+      "column": 31,
+      "row": 11
+    },
+    "message": "Use `super()` instead of `super(__class__, self)`",
+    "name": "super-call-with-parameters",
+    "noqa_row": 11,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/super-call-with-parameters"
+  },
+  {
+    "cell": null,
+    "code": "PIE794",
+    "end_location": {
+      "column": 94,
+      "row": 35
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\login.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 36
+          },
+          "location": {
+            "column": 1,
+            "row": 35
+          }
+        }
+      ],
+      "message": "Remove duplicate field definition for `email`"
+    },
+    "location": {
+      "column": 5,
+      "row": 35
+    },
+    "message": "Class field `email` is defined multiple times",
+    "name": "duplicate-class-field-definition",
+    "noqa_row": 35,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/duplicate-class-field-definition"
+  },
+  {
+    "cell": null,
+    "code": "UP008",
+    "end_location": {
+      "column": 49,
+      "row": 39
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\login.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 48,
+            "row": 39
+          },
+          "location": {
+            "column": 32,
+            "row": 39
+          }
+        }
+      ],
+      "message": "Remove `super()` parameters"
+    },
+    "location": {
+      "column": 31,
+      "row": 39
+    },
+    "message": "Use `super()` instead of `super(__class__, self)`",
+    "name": "super-call-with-parameters",
+    "noqa_row": 39,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/super-call-with-parameters"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 48,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\forms\\teams.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from wtforms import SelectField, StringField, validators\r\n\r\nfrom appname.constants import TEAM_MEMBER_ROLES\r\nfrom appname.forms import BaseForm\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 60,
+      "row": 7
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\helpers\\gdpr.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import json\r\nimport logging\r\nfrom collections import defaultdict\r\n\r\nfrom flask_mail import Attachment\r\n\r\nfrom appname.mailers.notification import NotificationMailer\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 9
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "TRY002",
+    "end_location": {
+      "column": 75,
+      "row": 17
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\helpers\\gdpr.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 17
+    },
+    "message": "Create your own exception",
+    "name": "raise-vanilla-class",
+    "noqa_row": 17,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/raise-vanilla-class"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\helpers\\session.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import flash, redirect, session, url_for\r\nfrom flask_login import current_user\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 2
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 2
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 2,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "RUF015",
+    "end_location": {
+      "column": 65,
+      "row": 11
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\helpers\\session.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "next(m for m in memberships if m.id == session_id)",
+          "end_location": {
+            "column": 65,
+            "row": 11
+          },
+          "location": {
+            "column": 16,
+            "row": 11
+          }
+        }
+      ],
+      "message": "Replace with `next(m for m in memberships if m.id == session_id)`"
+    },
+    "location": {
+      "column": 16,
+      "row": 11
+    },
+    "message": "Prefer `next(m for m in memberships if m.id == session_id)` over single element slice",
+    "name": "unnecessary-iterable-allocation-for-first-element",
+    "noqa_row": 11,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-iterable-allocation-for-first-element"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 46,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\helpers\\view.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "\"{} {}\".format(amount, currency)",
+          "end_location": {
+            "column": 46,
+            "row": 5
+          },
+          "location": {
+            "column": 12,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 12,
+      "row": 5
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 5,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 46,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\helpers\\view.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"{amount} {currency}\"",
+          "end_location": {
+            "column": 46,
+            "row": 5
+          },
+          "location": {
+            "column": 12,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 12,
+      "row": 5
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 5,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 41,
+      "row": 8
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import os\r\n\r\nfrom flask import render_template\r\nfrom flask_mail import Message\r\n\r\nfrom appname.extensions import mail, rq2\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 10
+          },
+          "location": {
+            "column": 1,
+            "row": 3
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 3
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 3,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\auth.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import render_template, url_for\r\n\r\nimport appname.constants as constants\r\nfrom appname.extensions import token\r\nfrom appname.mailers import Mailer\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 7
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "PLR0402",
+    "end_location": {
+      "column": 38,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\auth.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname import constants",
+          "end_location": {
+            "column": 38,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 3
+          }
+        }
+      ],
+      "message": "Replace with `from appname import constants`"
+    },
+    "location": {
+      "column": 8,
+      "row": 3
+    },
+    "message": "Use `from appname import constants` in lieu of alias",
+    "name": "manual-from-import",
+    "noqa_row": 3,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/manual-from-import"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 35,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\notification.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import render_template\r\n\r\nfrom appname.mailers import Mailer\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 6
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\store.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from datetime import datetime as dt\r\n\r\nfrom flask import render_template\r\n\r\nimport appname.constants as constants\r\nfrom appname.extensions import token\r\nfrom appname.mailers import Mailer\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 8
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "PLR0402",
+    "end_location": {
+      "column": 38,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\store.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname import constants",
+          "end_location": {
+            "column": 38,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 4
+          }
+        }
+      ],
+      "message": "Replace with `from appname import constants`"
+    },
+    "location": {
+      "column": 8,
+      "row": 4
+    },
+    "message": "Use `from appname import constants` in lieu of alias",
+    "name": "manual-from-import",
+    "noqa_row": 4,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/manual-from-import"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 91,
+      "row": 13
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\store.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"{self.recipient.email}-{dt.now()}\"",
+          "end_location": {
+            "column": 91,
+            "row": 13
+          },
+          "location": {
+            "column": 15,
+            "row": 13
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 15,
+      "row": 13
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 13,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "DTZ005",
+    "end_location": {
+      "column": 90,
+      "row": 13
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\store.py",
+    "fix": null,
+    "location": {
+      "column": 82,
+      "row": 13
+    },
+    "message": "`datetime.datetime.now()` called without a `tz` argument",
+    "name": "call-datetime-now-without-tzinfo",
+    "noqa_row": 13,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/call-datetime-now-without-tzinfo"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 40,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\teams.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from flask import render_template, url_for\r\n\r\nfrom appname.extensions import branding\r\nfrom appname.mailers import Mailer\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 109,
+      "row": 15
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\teams.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "\"{} invited you to join their team on {}\".format(self.invite.inviter.email, branding.name)",
+          "end_location": {
+            "column": 109,
+            "row": 15
+          },
+          "location": {
+            "column": 17,
+            "row": 15
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 17,
+      "row": 15
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 15,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 109,
+      "row": 15
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\mailers\\teams.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"{self.invite.inviter.email} invited you to join their team on {branding.name}\"",
+          "end_location": {
+            "column": 109,
+            "row": 15
+          },
+          "location": {
+            "column": 17,
+            "row": 15
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 17,
+      "row": 15
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 15,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 32,
+      "row": 10
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import base64\r\nimport functools\r\nimport json\r\nimport logging\r\nimport os\r\n\r\nfrom flask_sqlalchemy import SQLAlchemy\r\nfrom flask_sqlalchemy.query import Query as BaseQuery\r\nfrom sqlalchemy import MetaData\r\nfrom sqlalchemy_utils import force_auto_coercion, force_instant_defaults\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 12
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 50,
+      "row": 42
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"{flask_secret:<32}\"",
+          "end_location": {
+            "column": 50,
+            "row": 42
+          },
+          "location": {
+            "column": 21,
+            "row": 42
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 21,
+      "row": 42
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 42,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP008",
+    "end_location": {
+      "column": 46,
+      "row": 54
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 45,
+            "row": 54
+          },
+          "location": {
+            "column": 21,
+            "row": 54
+          }
+        }
+      ],
+      "message": "Remove `super()` parameters"
+    },
+    "location": {
+      "column": 20,
+      "row": 54
+    },
+    "message": "Use `super()` instead of `super(__class__, self)`",
+    "name": "super-call-with-parameters",
+    "noqa_row": 54,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/super-call-with-parameters"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 29,
+      "row": 92
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 92
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 92,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 68,
+      "row": 103
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'<{} {}>'.format(self.__class__.__name__, key_val)",
+          "end_location": {
+            "column": 68,
+            "row": 103
+          },
+          "location": {
+            "column": 16,
+            "row": 103
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 16,
+      "row": 103
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 103,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 68,
+      "row": 103
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'<{self.__class__.__name__} {key_val}>'",
+          "end_location": {
+            "column": 68,
+            "row": 103
+          },
+          "location": {
+            "column": 16,
+            "row": 103
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 16,
+      "row": 103
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 103,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 84,
+      "row": 113
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'Model {} is not able to be force deleted'.format(self)",
+          "end_location": {
+            "column": 84,
+            "row": 113
+          },
+          "location": {
+            "column": 28,
+            "row": 113
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 28,
+      "row": 113
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 113,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 84,
+      "row": 113
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'Model {self} is not able to be force deleted'",
+          "end_location": {
+            "column": 84,
+            "row": 113
+          },
+          "location": {
+            "column": 28,
+            "row": 113
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 28,
+      "row": 113
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 113,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "TRY002",
+    "end_location": {
+      "column": 69,
+      "row": 114
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 114
+    },
+    "message": "Create your own exception",
+    "name": "raise-vanilla-class",
+    "noqa_row": 114,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/raise-vanilla-class"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 68,
+      "row": 114
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'Cannot force destroy {}'.format(self)",
+          "end_location": {
+            "column": 68,
+            "row": 114
+          },
+          "location": {
+            "column": 29,
+            "row": 114
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 29,
+      "row": 114
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 114,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 68,
+      "row": 114
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\__init__.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'Cannot force destroy {self}'",
+          "end_location": {
+            "column": 68,
+            "row": 114
+          },
+          "location": {
+            "column": 29,
+            "row": 114
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 29,
+      "row": 114
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 114,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\team_file.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname.models import Model, db\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 6,
+      "row": 26
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\team_file.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 20
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 20,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 58,
+      "row": 3
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\teams\\team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import logging\r\n\r\nfrom appname.billing_plans import FreePlan, plans_by_name\r\nfrom appname.models import Model, ModelProxy, db, transaction\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 6,
+      "row": 38
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\teams\\team.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 32
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 32,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 47,
+      "row": 7
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\teams\\team_member.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import logging\r\n\r\nfrom appname.mailers.teams import InviteEmail\r\nfrom appname.models import Model, db\r\nfrom appname.models.user import User\r\nfrom appname.utils.token import url_safe_token\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 9
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 6,
+      "row": 38
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\teams\\team_member.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 31
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 31,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "TRY002",
+    "end_location": {
+      "column": 49,
+      "row": 66
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\teams\\team_member.py",
+    "fix": null,
+    "location": {
+      "column": 19,
+      "row": 66
+    },
+    "message": "Create your own exception",
+    "name": "raise-vanilla-class",
+    "noqa_row": 66,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/raise-vanilla-class"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 75,
+      "row": 12
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\user.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import logging\r\n\r\nfrom flask_dance.consumer.storage.sqla import OAuthConsumerMixin\r\nfrom flask_login import AnonymousUserMixin, UserMixin\r\nfrom sqlalchemy.orm.collections import attribute_mapped_collection\r\nfrom sqlalchemy_utils.types import EncryptedType\r\nfrom sqlalchemy_utils.types.encrypted.encrypted_type import FernetEngine\r\nfrom werkzeug.security import check_password_hash, generate_password_hash\r\n\r\nfrom appname.models import Model, ModelProxy, db, global_encryption_key_iv\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 14
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 6,
+      "row": 41
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\user.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 34
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 34,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 51,
+      "row": 63
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\user.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "\"{}'s team\".format(email)",
+          "end_location": {
+            "column": 51,
+            "row": 63
+          },
+          "location": {
+            "column": 25,
+            "row": 63
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 25,
+      "row": 63
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 63,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 51,
+      "row": 63
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\user.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"{email}'s team\"",
+          "end_location": {
+            "column": 51,
+            "row": 63
+          },
+          "location": {
+            "column": 25,
+            "row": 63
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 25,
+      "row": 63
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 63,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 47,
+      "row": 121
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\user.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'<User {}>'.format(self.email)",
+          "end_location": {
+            "column": 47,
+            "row": 121
+          },
+          "location": {
+            "column": 16,
+            "row": 121
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 16,
+      "row": 121
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 121,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 47,
+      "row": 121
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\user.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'<User {self.email}>'",
+          "end_location": {
+            "column": 47,
+            "row": 121
+          },
+          "location": {
+            "column": 16,
+            "row": 121
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 16,
+      "row": 121
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 121,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 6,
+      "row": 158
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\models\\user.py",
+    "fix": null,
+    "location": {
+      "column": 27,
+      "row": 153
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 153,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 22,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\roles.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from enum import Enum\r\nfrom functools import wraps\r\n\r\nfrom flask import current_user\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 2
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 2
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 2,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "PLE0704",
+    "end_location": {
+      "column": 22,
+      "row": 21
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\roles.py",
+    "fix": null,
+    "location": {
+      "column": 17,
+      "row": 21
+    },
+    "message": "Bare `raise` statement is not inside an exception handler",
+    "name": "misplaced-bare-raise",
+    "noqa_row": 21,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/misplaced-bare-raise"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 10,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\branding.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import os\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 2
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 10,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\branding.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 2
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Remove unused import: `os`"
+    },
+    "location": {
+      "column": 8,
+      "row": 1
+    },
+    "message": "`os` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 28,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\hash_ids.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from hashids import Hashids\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "UP030",
+    "end_location": {
+      "column": 79,
+      "row": 14
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\hash_ids.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "'Could not decode hash {} into ID'.format(value)",
+          "end_location": {
+            "column": 79,
+            "row": 14
+          },
+          "location": {
+            "column": 30,
+            "row": 14
+          }
+        }
+      ],
+      "message": "Remove explicit positional indices"
+    },
+    "location": {
+      "column": 30,
+      "row": 14
+    },
+    "message": "Use implicit references for positional format fields",
+    "name": "format-literals",
+    "noqa_row": 14,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/format-literals"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 79,
+      "row": 14
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\hash_ids.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f'Could not decode hash {value} into ID'",
+          "end_location": {
+            "column": 79,
+            "row": 14
+          },
+          "location": {
+            "column": 30,
+            "row": 14
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 30,
+      "row": 14
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 14,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 48,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\security.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import hashlib\r\n\r\nfrom itsdangerous import URLSafeTimedSerializer\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 14,
+      "row": 7
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\stripe.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import time\r\nfrom urllib.parse import unquote\r\n\r\nimport stripe\r\nfrom flask import url_for\r\n\r\nfrom appname.models import db\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 9
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 33,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\services\\stripe.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 2
+          }
+        }
+      ],
+      "message": "Remove unused import: `urllib.parse.unquote`"
+    },
+    "location": {
+      "column": 26,
+      "row": 2
+    },
+    "message": "`urllib.parse.unquote` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 2,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "UP004",
+    "end_location": {
+      "column": 20,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\settings.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 21,
+            "row": 4
+          },
+          "location": {
+            "column": 13,
+            "row": 4
+          }
+        }
+      ],
+      "message": "Remove `object` inheritance"
+    },
+    "location": {
+      "column": 14,
+      "row": 4
+    },
+    "message": "Class `Config` inherits from `object`",
+    "name": "useless-object-inheritance",
+    "noqa_row": 4,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/useless-object-inheritance"
+  },
+  {
+    "cell": null,
+    "code": "PLW1508",
+    "end_location": {
+      "column": 51,
+      "row": 15
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\settings.py",
+    "fix": null,
+    "location": {
+      "column": 47,
+      "row": 15
+    },
+    "message": "Invalid type for environment variable default; expected `str` or `None`",
+    "name": "invalid-envvar-default",
+    "noqa_row": 15,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/invalid-envvar-default"
+  },
+  {
+    "cell": null,
+    "code": "PLW1508",
+    "end_location": {
+      "column": 50,
+      "row": 18
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\settings.py",
+    "fix": null,
+    "location": {
+      "column": 46,
+      "row": 18
+    },
+    "message": "Invalid type for environment variable default; expected `str` or `None`",
+    "name": "invalid-envvar-default",
+    "noqa_row": 18,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/invalid-envvar-default"
+  },
+  {
+    "cell": null,
+    "code": "RUF012",
+    "end_location": {
+      "column": 42,
+      "row": 36
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\settings.py",
+    "fix": null,
+    "location": {
+      "column": 30,
+      "row": 36
+    },
+    "message": "Mutable default value for class attribute",
+    "name": "mutable-class-default",
+    "noqa_row": 36,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/mutable-class-default"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 12,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\utils\\time.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import datetime as dt\r\n\r\nimport pytz\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "DTZ005",
+    "end_location": {
+      "column": 45,
+      "row": 33
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\utils\\time.py",
+    "fix": null,
+    "location": {
+      "column": 28,
+      "row": 33
+    },
+    "message": "`datetime.datetime.now()` called without a `tz` argument",
+    "name": "call-datetime-now-without-tzinfo",
+    "noqa_row": 33,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/call-datetime-now-without-tzinfo"
+  },
+  {
+    "cell": null,
+    "code": "UP032",
+    "end_location": {
+      "column": 55,
+      "row": 17
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\appname\\utils\\token.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "f\"{user.hashid}-{user_secret}\"",
+          "end_location": {
+            "column": 55,
+            "row": 17
+          },
+          "location": {
+            "column": 15,
+            "row": 17
+          }
+        }
+      ],
+      "message": "Convert to f-string"
+    },
+    "location": {
+      "column": 15,
+      "row": 17
+    },
+    "message": "Use f-string instead of `format` call",
+    "name": "f-string",
+    "noqa_row": 17,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/f-string"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 14,
+      "row": 2
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\conftest.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import os\r\n\r\nimport pytest\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 4
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 37,
+      "row": 9
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\conftest.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname import create_app\r\nfrom appname.models import db\r\nfrom appname.models.user import User\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 11
+          },
+          "location": {
+            "column": 1,
+            "row": 7
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 7
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 7,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "PLR0402",
+    "end_location": {
+      "column": 38,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_auth_extra.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname import constants",
+          "end_location": {
+            "column": 38,
+            "row": 5
+          },
+          "location": {
+            "column": 1,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Replace with `from appname import constants`"
+    },
+    "location": {
+      "column": 8,
+      "row": 5
+    },
+    "message": "Use `from appname import constants` in lieu of alias",
+    "name": "manual-from-import",
+    "noqa_row": 5,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/manual-from-import"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 31,
+      "row": 1
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_config.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from appname import create_app\r\n\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 3
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "RUF059",
+    "end_location": {
+      "column": 19,
+      "row": 286
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_dashboard_actions.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "_team",
+          "end_location": {
+            "column": 19,
+            "row": 286
+          },
+          "location": {
+            "column": 15,
+            "row": 286
+          }
+        }
+      ],
+      "message": "Prefix it with an underscore or any other dummy variable pattern"
+    },
+    "location": {
+      "column": 15,
+      "row": 286
+    },
+    "message": "Unpacked variable `team` is never used",
+    "name": "unused-unpacked-variable",
+    "noqa_row": 286,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-unpacked-variable"
+  },
+  {
+    "cell": null,
+    "code": "C408",
+    "end_location": {
+      "column": 10,
+      "row": 13
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_login.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "{\r\n            \"email\": 'admin@example.com',\r\n            \"password\": \"supersafepassword\"\r\n        }",
+          "end_location": {
+            "column": 10,
+            "row": 13
+          },
+          "location": {
+            "column": 42,
+            "row": 10
+          }
+        }
+      ],
+      "message": "Rewrite as a literal"
+    },
+    "location": {
+      "column": 42,
+      "row": 10
+    },
+    "message": "Unnecessary `dict()` call (rewrite as a literal)",
+    "name": "unnecessary-collection-call",
+    "noqa_row": 10,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-collection-call"
+  },
+  {
+    "cell": null,
+    "code": "C408",
+    "end_location": {
+      "column": 10,
+      "row": 24
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_login.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "{\r\n            \"email\": 'admin',\r\n            \"password\": \"\"\r\n        }",
+          "end_location": {
+            "column": 10,
+            "row": 24
+          },
+          "location": {
+            "column": 42,
+            "row": 21
+          }
+        }
+      ],
+      "message": "Rewrite as a literal"
+    },
+    "location": {
+      "column": 42,
+      "row": 21
+    },
+    "message": "Unnecessary `dict()` call (rewrite as a literal)",
+    "name": "unnecessary-collection-call",
+    "noqa_row": 21,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-collection-call"
+  },
+  {
+    "cell": null,
+    "code": "C408",
+    "end_location": {
+      "column": 10,
+      "row": 35
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_login.py",
+    "fix": {
+      "applicability": "unsafe",
+      "edits": [
+        {
+          "content": "{\r\n            \"email\": 'admin@example.com',\r\n            \"password\": \"notsafepassword\"\r\n        }",
+          "end_location": {
+            "column": 10,
+            "row": 35
+          },
+          "location": {
+            "column": 42,
+            "row": 32
+          }
+        }
+      ],
+      "message": "Rewrite as a literal"
+    },
+    "location": {
+      "column": 42,
+      "row": 32
+    },
+    "message": "Unnecessary `dict()` call (rewrite as a literal)",
+    "name": "unnecessary-collection-call",
+    "noqa_row": 32,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unnecessary-collection-call"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 14,
+      "row": 4
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_roles_session_admin.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "from types import SimpleNamespace\r\n\r\nimport pytest\r\n\r\nimport appname.helpers.session as session_helper\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "B017",
+    "end_location": {
+      "column": 38,
+      "row": 44
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_services_billing_utils.py",
+    "fix": null,
+    "location": {
+      "column": 14,
+      "row": 44
+    },
+    "message": "Do not assert blind exception: `Exception`",
+    "name": "assert-raises-exception",
+    "noqa_row": 44,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/assert-raises-exception"
+  },
+  {
+    "cell": null,
+    "code": "B017",
+    "end_location": {
+      "column": 38,
+      "row": 206
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_services_billing_utils.py",
+    "fix": null,
+    "location": {
+      "column": 14,
+      "row": 206
+    },
+    "message": "Do not assert blind exception: `Exception`",
+    "name": "assert-raises-exception",
+    "noqa_row": 206,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/assert-raises-exception"
+  },
+  {
+    "cell": null,
+    "code": "DTZ001",
+    "end_location": {
+      "column": 50,
+      "row": 232
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_services_billing_utils.py",
+    "fix": null,
+    "location": {
+      "column": 17,
+      "row": 232
+    },
+    "message": "`datetime.datetime()` called without a `tzinfo` argument",
+    "name": "call-datetime-without-tzinfo",
+    "noqa_row": 232,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/call-datetime-without-tzinfo"
+  },
+  {
+    "cell": null,
+    "code": "I001",
+    "end_location": {
+      "column": 43,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "import pytest\r\n\r\nfrom appname.models import db\r\nfrom appname.models.teams.team import Team\r\nfrom appname.models.user import User\r\n\r\n",
+          "end_location": {
+            "column": 1,
+            "row": 7
+          },
+          "location": {
+            "column": 1,
+            "row": 1
+          }
+        }
+      ],
+      "message": "Organize imports"
+    },
+    "location": {
+      "column": 1,
+      "row": 1
+    },
+    "message": "Import block is un-sorted or un-formatted",
+    "name": "unsorted-imports",
+    "noqa_row": 1,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unsorted-imports"
+  },
+  {
+    "cell": null,
+    "code": "F401",
+    "end_location": {
+      "column": 43,
+      "row": 5
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_team.py",
+    "fix": {
+      "applicability": "safe",
+      "edits": [
+        {
+          "content": "",
+          "end_location": {
+            "column": 1,
+            "row": 6
+          },
+          "location": {
+            "column": 1,
+            "row": 5
+          }
+        }
+      ],
+      "message": "Remove unused import: `appname.models.teams.team.Team`"
+    },
+    "location": {
+      "column": 39,
+      "row": 5
+    },
+    "message": "`appname.models.teams.team.Team` imported but unused",
+    "name": "unused-import",
+    "noqa_row": 5,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/unused-import"
+  },
+  {
+    "cell": null,
+    "code": "B017",
+    "end_location": {
+      "column": 38,
+      "row": 94
+    },
+    "filename": "C:\\Users\\HP\\Downloads\\Ignite\\tests\\test_user.py",
+    "fix": null,
+    "location": {
+      "column": 14,
+      "row": 94
+    },
+    "message": "Do not assert blind exception: `Exception`",
+    "name": "assert-raises-exception",
+    "noqa_row": 94,
+    "severity": "error",
+    "url": "https://docs.astral.sh/ruff/rules/assert-raises-exception"
+  }
+]
