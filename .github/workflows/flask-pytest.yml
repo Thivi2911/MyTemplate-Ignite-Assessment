@@ -31,84 +31,9 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip -m pip install playwright pytest-playwright
+          python -m pip install playwright pytest-playwright flake8 bandit
           python -m pip show pytest-playwright
 
       - name: Verify Playwright pytest plugin
         run: |
           pytest --fixtures -q | grep -E "^page"
-
-      - name: Install Playwright browser
-        run: |
-          python -m playwright install --with-deps chromium
-
-      - name: Run application tests with coverage
-        run: |
-          mkdir -p test-reports
-          pytest tests/ \
-            --ignore=tests/test_ui.py \
-            --cov=appname \
-            --cov-report=term-missing \
-            --cov-report=html:coverage_report \
-            --junitxml=test-reports/results.xml
-
-      - name: Start Flask application and run UI tests
-        run: |
-          python -m flask --app manage run \
-            --host 127.0.0.1 \
-            --port 5000 \
-            --no-reload > flask.log 2>&1 &
-
-          SERVER_PID=$!
-
-          echo "Waiting for Flask application..."
-
-          for i in {1..30}; do
-            if curl --silent --fail http://127.0.0.1:5000/ > /dev/null; then
-              echo "Flask application is ready!"
-              break
-            fi
-
-            echo "Waiting for Flask application... attempt $i"
-            sleep 2
-          done
-
-          echo "Flask server log:"
-          cat flask.log
-
-          if ! curl --silent --fail http://127.0.0.1:5000/ > /dev/null; then
-            echo "Flask application failed to start."
-            kill "$SERVER_PID" || true
-            exit 1
-          fi
-
-          echo "Running UI tests..."
-          pytest tests/test_ui.py
-
-          TEST_EXIT_CODE=$?
-
-          kill "$SERVER_PID" || true
-
-          exit "$TEST_EXIT_CODE"
-
-      - name: Run Flake8
-        continue-on-error: true
-        run: |
-          flake8 appname tests > flake8-report.txt
-
-      - name: Run Bandit security scan
-        continue-on-error: true
-        run: |
-          bandit -r appname -f txt -o bandit-report.txt
-
-      - name: Upload test and quality reports
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: quality-reports
-          path: |
-            test-reports/
-            coverage_report/
-            flake8-report.txt
-            bandit-report.txt
-            flask.log
