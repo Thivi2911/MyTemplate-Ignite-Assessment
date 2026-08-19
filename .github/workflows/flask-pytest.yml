@@ -30,10 +30,84 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          python -m pip install playwright pytest-playwright flake8 bandit
-          python -m pip show pytest-playwright
+          python -m pip install -r requirements.txt
+          python -m pip install pytest pytest-cov playwright pytest-playwright ruff bandit
+
+      - name: Install Playwright browser
+        run: |
+          python -m playwright install --with-deps chromium
 
       - name: Verify Playwright pytest plugin
         run: |
           pytest --fixtures -q | grep -E "^page"
+
+      - name: Run application tests with coverage
+        run: |
+          mkdir -p test-reports
+
+          pytest tests/ \
+            --ignore=tests/test_ui.py \
+            --cov=appname \
+            --cov-report=term-missing \
+            --cov-report=xml \
+            --cov-report=html:coverage_report \
+            --junitxml=test-reports/results.xml
+
+      - name: Start Flask application and run UI tests
+        run: |
+          python manage.py server > flask.log 2>&1 &
+          SERVER_PID=$!
+
+          echo "Waiting for Flask application..."
+
+          for i in {1..30}; do
+            if curl --silent --fail http://127.0.0.1:5000/ > /dev/null; then
+              echo "Flask application is ready!"
+              break
+            fi
+
+            echo "Waiting for Flask application... attempt $i"
+            sleep 2
+          done
+
+          echo "Flask server log:"
+          cat flask.log
+
+          if ! curl --silent --fail http://127.0.0.1:5000/ > /dev/null; then
+            echo "Flask application failed to start."
+            kill "$SERVER_PID" || true
+            exit 1
+          fi
+
+          echo "Running Playwright UI tests..."
+
+          pytest tests/test_ui.py
+
+          TEST_EXIT_CODE=$?
+
+          kill "$SERVER_PID" || true
+
+          exit "$TEST_EXIT_CODE"
+
+      - name: Run Ruff
+        continue-on-error: true
+        run: |
+          ruff check appname tests --output-format=json > ruff-report.json
+
+      - name: Run Bandit security scan
+        continue-on-error: true
+        run: |
+          bandit -r appname -f json -o bandit-report.json
+
+      - name: Upload test and quality reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-reports
+          path: |
+            test-reports/
+            coverage_report/
+            coverage.xml
+            ruff-report.json
+            bandit-report.json
+            flask.log
